@@ -1,8 +1,19 @@
-import discord
-import requests
-import json
-import asyncio
+import discord, json, asyncio, requests
 from discord.ext.commands import Bot
+
+
+currencies = ['BTC-ACM','BTC-AEON', 'BTC-ARQ', 'BTC-BBS', 'BTC-BCN', 'BTC-BCN', 'BTC-BKC', 'BTC-BLOC', 'BTC-BSM', 'BTC-BTCP', 'BTC-CIV']
+
+help_text = 
+'''
+    !btc{TICKER} - Gives Price, High, Low , and Asking price of inputed Ticker.
+
+
+
+'''
+
+def getPrice(currency, crypto):
+
 
 url = "https://tradeogre.com/api/v1/ticker/BTC-ACM"
 response = requests.get(url)

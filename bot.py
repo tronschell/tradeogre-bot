@@ -14,13 +14,6 @@ currencies = ['ACM','AEON', 'ARQ', 'BBS', 'BCN', 'BKC', 'BLOC', 'BSM', 'BTCP', '
 client = Bot(command_prefix = "!")
 TOKEN = "NTIxMTM0ODI5MjE2MDcxNzMw.Du4EOg.ypV2JbmHXg3uAGUozLAI9w3VR98"
 
-help_text:'''
-
-!price {BTC/LTC}{TICKER} - gets current price data including: high, low and current price.
-!donate - gives developer Bitcoin address
-
-'''
-
 
 @client.event
 async def on_ready():
@@ -33,7 +26,7 @@ async def price(currency, crypto):
     input1 = currency.upper()
     input2 = crypto.upper()
 
-    if(input1 in yes&& input2 in currencies):
+    if(input1 in yes & input2 in currencies):
         url = "https://tradeogre.com/api/v1/ticker/{}-{}".format(input1, input2)
         response = requests.get(url)
         data = response.json()
@@ -46,7 +39,7 @@ async def price(currency, crypto):
 
         embed = discord.Embed(title='{}-{}'.format(currency, crypto), description=finalString, color =0x00ff00)
 
-        await client.say(finalString)
+        await client.say(embed=embed)
     else:
         await client.say("Test")
 

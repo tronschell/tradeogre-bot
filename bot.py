@@ -23,25 +23,28 @@ async def on_ready():
 @client.command()
 async def price(currency, crypto):
 
-    input1 = currency.upper()
-    input2 = crypto.upper()
+    input1 = str(currency.upper())
+    input2 = str(crypto.upper())
 
-    if(input1 in yes & input2 in currencies):
-        url = "https://tradeogre.com/api/v1/ticker/{}-{}".format(input1, input2)
-        response = requests.get(url)
-        data = response.json()
+    if(input1 in yes):
+        if(input2 in currencies):
+            url = "https://tradeogre.com/api/v1/ticker/{}-{}".format(input1, input2)
+            response = requests.get(url)
+            data = response.json()
 
-        price_data = data['price']
-        high_data = data['high']
-        low_data = data['low']
-            
-        finalString = "Current Price: " + price_data + "24hr High: " + high_data + "24hr Low: " + low_data
+            price_data = data['price']
+            high_data = data['high']
+            low_data = data['low']
+                
+            finalString = "Current Price: " + str(price_data) + '\n' +"24hr High: " + str(high_data) + '\n' + "24hr Low: " + str(low_data)
 
-        embed = discord.Embed(title='{}-{}'.format(currency, crypto), description=finalString, color =0x00ff00)
+            embed = discord.Embed(title='{}-{}'.format(input1, input2), description=finalString, color =0x00ff00)
 
-        await client.say(embed=embed)
+            await client.say(embed=embed)
+        else:
+            await client.say("Not a supported currency pair")
     else:
-        await client.say("Test")
+        await client.say("Not a supported currency pair")
 
 @client.command()
 async def donate():

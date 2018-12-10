@@ -1,10 +1,10 @@
-import discord, json, asyncio, requests
+import discord, json, asyncio, requests, os
 from discord.ext.commands import Bot
 
 
-yes = ['BTC', 'LTC']
+primaryCurrency = ['BTC', 'LTC']
 
-currencies = ['ACM','AEON', 'ARQ', 'BBS', 'BCN', 'BKC', 'BLOC', 'BSM', 'BTCP', 'CIV',
+altCoin = ['ACM','AEON', 'ARQ', 'BBS', 'BCN', 'BKC', 'BLOC', 'BSM', 'BTCP', 'CIV',
 'COAL', 'D', 'DASH', 'DERO', 'DOGE', 'ETH', 'ETN', 'ETNX', 'ETNXP', 'FBF', 'GPKR', 'GRFT',
 'INC', 'INTU', 'IRD', 'KRB', 'LNS', 'LOKI', 'LTC', 'LTHN', 'LUX', 'MSR', 'NAH', 'NBR', 'OMB',
 'PCN', 'PIVX', 'PIVX', 'PLURA', 'PURK', 'QTUM', 'QUAN', 'RTO', 'RVN', 'RYO', 'SHB', 'SLD', 'SOLACE',
@@ -12,7 +12,7 @@ currencies = ['ACM','AEON', 'ARQ', 'BBS', 'BCN', 'BKC', 'BLOC', 'BSM', 'BTCP', '
 'XNV', 'XPP', 'XRN', 'XTA', 'XTL', 'XTRI', 'XUN', 'XVG', 'ZEL']
 
 client = Bot(command_prefix = "!")
-TOKEN = "NTIxMTM0ODI5MjE2MDcxNzMw.Du4EOg.ypV2JbmHXg3uAGUozLAI9w3VR98"
+TOKEN = os.environ.get()
 
 
 @client.event
@@ -26,8 +26,8 @@ async def price(currency, crypto):
     input1 = str(currency.upper())
     input2 = str(crypto.upper())
 
-    if(input1 in yes):
-        if(input2 in currencies):
+    if(input1 in primaryCurrency):
+        if(input2 in altCoin):
             url = "https://tradeogre.com/api/v1/ticker/{}-{}".format(input1, input2)
             response = requests.get(url)
             data = response.json()
@@ -53,7 +53,6 @@ async def donate():
 @client.command()
 async def api():
     await client.say("We are using the public Tradeogre API: https://tradeogre.com/api/v1")
-
 
 
 client.run(TOKEN)

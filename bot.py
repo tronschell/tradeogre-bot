@@ -48,7 +48,7 @@ async def price(currency, crypto):
 
 @client.command()
 async def donate():
-    await client.say("To donate please use this BTC address: ")
+    await client.say("To donate please use this BTC address: 3CuYbCWtKdW6PqZHHF1oJjpmeX5Ddp6SrV ")
 
 @client.command()
 async def api():

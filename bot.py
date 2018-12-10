@@ -12,7 +12,7 @@ altCoin = ['ACM','AEON', 'ARQ', 'BBS', 'BCN', 'BKC', 'BLOC', 'BSM', 'BTCP', 'CIV
 'XNV', 'XPP', 'XRN', 'XTA', 'XTL', 'XTRI', 'XUN', 'XVG', 'ZEL']
 
 client = Bot(command_prefix = "!")
-TOKEN = os.environ.get()
+
 
 
 @client.event
@@ -55,4 +55,4 @@ async def api():
     await client.say("We are using the public Tradeogre API: https://tradeogre.com/api/v1")
 
 
-client.run(TOKEN)
+client.run(os.environ.get('TOKEN', None))

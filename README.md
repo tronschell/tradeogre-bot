@@ -10,4 +10,4 @@ The TradeOgre Discord Bot is meant for people who want to know price data for ce
   - !donate - shows devleoper BTC address
 ## Known Issues
 
-- No LTC pairs available yet
+- None yet.

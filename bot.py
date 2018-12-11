@@ -24,6 +24,44 @@ async def price(currency, crypto):
     input1 = str(currency.upper())
     input2 = str(crypto.upper())
 
+
+    if (input1 == "SAT"):
+        if (input2 == "USD"):
+                url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
+                response = requests.get(url)
+                data = response.text
+                parsed = json.loads(data)
+                usd_rate = parsed["USD"]
+                int_usd_rate = float(usd_rate)
+
+                inputed_price = int(input1)
+                inputed_amount = int(input2)
+                price = inputed_amount*inputed_price
+                final_price = format(price*int_usd_rate, '.2f')
+
+                await client.say('$'+str(final_price))
+        elif (input2 == "EUR"):
+                url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
+                response = requests.get(url)
+                data = response.text
+                parsed = json.loads(data)
+                usd_rate = parsed["USD"]
+                int_usd_rate = float(usd_rate)
+
+                inputed_price = int(input1)
+                inputed_amount = int(input2)
+                price = inputed_amount*inputed_price
+
+                    
+                final_price = format(price*int_usd_rate, '.2f')
+
+                await client.say('€'+str(final_price))
+        else:
+                await client.say("Not a valid currency pair")
+
+
+    await client.say('$'+str(final_price))
+            
     if(input1 in primaryCurrency):
         if(input2 in altCoin):
             url = "https://tradeogre.com/api/v1/ticker/{}-{}".format(input1, input2)
@@ -44,8 +82,6 @@ async def price(currency, crypto):
     else:
         await client.say("Not a supported currency pair")
 
-@client.command()
-async def 
 
 @client.command()
 async def donate():

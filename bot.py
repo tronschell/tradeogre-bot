@@ -19,6 +19,7 @@ async def on_ready():
 
 
 @client.command()
+#Tradeogre prices
 async def price(currency, crypto):
 
     input1 = str(currency.upper())
@@ -44,6 +45,7 @@ async def price(currency, crypto):
     else:
         await client.say("Not a supported currency pair")
 
+#Personal API prices
 @client.command()
 async def sat():
     url2 = "https://api.coindesk.com/v1/bpi/currentprice.json"
@@ -68,8 +70,42 @@ async def sat():
 
     data = "SAT/USD: "+ usd_price + "SAT/EUR: "+ eur_price + "BTC/USD: " + btc_usd_price + "BTC/EUR: " + btc_eur_price
 
-    embed = discord.Embed(title="Realtime Price Data", description=data, color =0x00ff00)
+    embed = discord.Embed(title="Satoshi Price Data", description=data, color =0xff66cc)
     await client.say(embed=embed)
+    
+#Satoshi Calculator USD
+@client.command()
+async def satusd():
+    url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
+    response = requests.get(url)
+    data = response.text
+    parsed = json.loads(data)
+    usd_rate = parsed["USD"]
+    int_usd_rate = float(usd_rate)
+
+    inputed_price = int(number)
+    inputed_amount = int(number2)
+    price = inputed_amount*inputed_price
+    final_price = format(price*int_usd_rate, '.2f')
+
+    await client.say('$'+str(final_price))
+
+#Satoshi Calculator EUR
+@client.command()
+async def sateur():
+    url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
+    response = requests.get(url)
+    data = response.text
+    parsed = json.loads(data)
+    eur_rate = parsed["EUR"]
+    int_eur_rate = float(eur_rate)
+
+    inputed_price = int(number)
+    inputed_amount = int(number2)
+    price = inputed_amount*inputed_price
+    final_price = format(price*int_eur_rate, '.2f')
+    
+    await client.say('€'+str(final_price))
 
 @client.command()
 async def donate():

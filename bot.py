@@ -72,10 +72,10 @@ async def sat():
 
     embed = discord.Embed(title="Satoshi Price Data", description=data, color =0xff66cc)
     await client.say(embed=embed)
-    
+
 #Satoshi Calculator USD
 @client.command()
-async def satusd():
+async def satusd(number, number2):
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
     response = requests.get(url)
     data = response.text
@@ -92,7 +92,7 @@ async def satusd():
 
 #Satoshi Calculator EUR
 @client.command()
-async def sateur():
+async def sateur(number, number2):
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
     response = requests.get(url)
     data = response.text

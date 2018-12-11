@@ -44,7 +44,7 @@ async def price(currency, crypto):
     else:
         await client.say("Not a supported currency pair")
 
-@client.command():
+@client.command()
 async def sat():
     url2 = "https://api.coindesk.com/v1/bpi/currentprice.json"
     response2 = requests.get(url2)

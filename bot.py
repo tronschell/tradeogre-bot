@@ -13,8 +13,6 @@ altCoin = ['ACM','AEON', 'ARQ', 'BBS', 'BCN', 'BKC', 'BLOC', 'BSM', 'BTCP', 'CIV
 
 client = Bot(command_prefix = "!")
 
-
-
 @client.event
 async def on_ready():
     print("Logged in")
@@ -45,6 +43,9 @@ async def price(currency, crypto):
             await client.say("Not a supported currency pair")
     else:
         await client.say("Not a supported currency pair")
+
+@client.command()
+async def 
 
 @client.command()
 async def donate():

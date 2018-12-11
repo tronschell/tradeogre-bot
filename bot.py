@@ -113,7 +113,10 @@ async def donate():
 
 @client.command()
 async def api():
-    await client.say("We are using the public Tradeogre API: https://tradeogre.com/api/v1")
+    data = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI" + '\n' + "https://api.coindesk.com/v1/bpi/currentprice.json" + '\n' + 'https://tradeogre.com/api/v1/markets'
+
+    embed = discord.Embed(title="API's", description=data, color=0xff6666)
+    await client.say()
 
 
 client.run(os.environ.get('TOKEN', None))

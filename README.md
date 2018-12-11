@@ -6,8 +6,11 @@ The TradeOgre Discord Bot is meant for people who want to know price data for ce
 ## Commands
 
   - !price {BTC/LTC} {TICKER} - gets current price data including: high, low and current price.
-  - !api - shows the API we are using
-  - !donate - shows devleoper BTC address
+  - !sat - lists prices for Satoshi and Bitcoin.
+  - !sat{USD/EUR} {Price} {Amount} - Calculates the value of a custom coin.
+  - !api - shows the API's we are using.
+  - !donate - shows devleoper BTC address.
+  
 ## Known Issues
 
 - None yet.

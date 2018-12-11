@@ -59,8 +59,6 @@ async def price(currency, crypto):
         else:
                 await client.say("Not a valid currency pair")
 
-
-    await client.say('$'+str(final_price))
             
     if(input1 in primaryCurrency):
         if(input2 in altCoin):

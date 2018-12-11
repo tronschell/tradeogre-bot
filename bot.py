@@ -116,7 +116,7 @@ async def api():
     data = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI" + '\n' + "https://api.coindesk.com/v1/bpi/currentprice.json" + '\n' + 'https://tradeogre.com/api/v1/markets'
 
     embed = discord.Embed(title="API's", description=data, color=0xff6666)
-    await client.say()
+    await client.say(embed=embed)
 
 
 client.run(os.environ.get('TOKEN', None))

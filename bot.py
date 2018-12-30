@@ -17,7 +17,6 @@ client = Bot(command_prefix = "!")
 async def on_ready():
     print("Logged in")
 
-
 @client.command()
 #Tradeogre prices
 async def price(currency, crypto):
@@ -118,5 +117,13 @@ async def api():
     embed = discord.Embed(title="API's", description=data, color=0xff6666)
     await client.say(embed=embed)
 
-
+#WORK ON THIS NEXT
+@client.command()
+async def online():
+    response = requests.get("tradeogre.com")
+    statusCode = int(response.status_code)
+    if statusCode == 200:
+        await client.say("Tradeogre is online.")
+    else:
+        await client.say("Tradeogre is offline.")
 client.run(os.environ.get('TOKEN', None))

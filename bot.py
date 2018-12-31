@@ -120,7 +120,7 @@ async def api():
 #WORK ON THIS NEXT
 @client.command()
 async def online():
-    response = requests.get("tradeogre.com")
+    response = requests.get("https://tradeogre.com/markets")
     statusCode = int(response.status_code)
     if statusCode == 200:
         await client.say("Tradeogre is online.")
